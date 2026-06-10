@@ -1,5 +1,12 @@
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://aiwebbb.com');
+  // Allow both custom domain and Vercel preview URL
+  const origin = req.headers.origin || '';
+  const allowed = ['https://aiwebbb.com','https://aiwebbb.vercel.app'];
+  if (allowed.includes(origin) || origin.endsWith('.vercel.app')) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', 'https://aiwebbb.com');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(200).end();

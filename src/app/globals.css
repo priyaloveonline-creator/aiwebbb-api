@@ -1,1 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ── Tokens ─────────────────────────────────────────────────── */
+:root {
+  --bg:      #ffffff; --bg2: #f7f7f8; --bg3: #f0f0f2; --bghov: #e9e9ec;
+  --txt:     #0a0a0a; --txt2: #6b6b6b; --txt3: #9a9a9a;
+  --border:  rgba(0,0,0,0.09);
+  --purple:  #6c47ff; --purple-l: #f0edff; --purple-d: #4a2fcf;
+  --sidebar: 212px;
+  --scrollbar: rgba(0,0,0,0.12);
+  --toast-bg: #fff; --toast-tx: #0a0a0a; --toast-br: rgba(0,0,0,0.1);
+}
+.dark {
+  --bg:      #0d0d0d; --bg2: #161618; --bg3: #1e1e22; --bghov: #26262c;
+  --txt:     #f0f0f0; --txt2: #a0a0a8; --txt3: #606068;
+  --border:  rgba(255,255,255,0.09);
+  --purple-l: #1e1830;
+  --scrollbar: rgba(255,255,255,0.12);
+  --toast-bg: #1e1e22; --toast-tx: #f0f0f0; --toast-br: rgba(255,255,255,0.1);
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+html,body { height:100%; overflow:hidden; }
+body { background:var(--bg); color:var(--txt); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; -webkit-font-smoothing:antialiased; }
+*,:before,:after { box-sizing:border-box; }
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width:4px; height:4px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--scrollbar); border-radius:99px; }
+
+/* ── Utilities ──────────────────────────────────────────────── */
+@layer utilities {
+  .bg-surface    { background-color: var(--bg); }
+  .bg-surface2   { background-color: var(--bg2); }
+  .bg-surface3   { background-color: var(--bg3); }
+  .text-main     { color: var(--txt); }
+  .text-sub      { color: var(--txt2); }
+  .text-muted    { color: var(--txt3); }
+  .border-base   { border-color: var(--border); }
+  .txt-purple    { color: var(--purple); }
+  .bg-purple-app { background-color: var(--purple); }
+  .bg-purple-l   { background-color: var(--purple-l); }
+  .sidebar-w     { width: var(--sidebar); min-width: var(--sidebar); }
+
+  /* Streaming cursor */
+  .cursor-blink::after {
+    content:'▋'; animation: blink 1s step-end infinite;
+    color:var(--purple); font-size:0.85em;
+  }
+}
+
+/* ── Markdown ───────────────────────────────────────────────── */
+.md h1 { font-size:1.4rem; font-weight:600; margin:.8rem 0 .4rem; }
+.md h2 { font-size:1.2rem; font-weight:600; margin:.7rem 0 .35rem; }
+.md h3 { font-size:1.05rem; font-weight:600; margin:.6rem 0 .3rem; }
+.md p  { margin-bottom:.65rem; line-height:1.65; font-size:13.5px; }
+.md ul,.md ol { padding-left:1.4rem; margin-bottom:.65rem; }
+.md li { margin-bottom:.2rem; font-size:13.5px; }
+.md code:not(pre code) {
+  background:var(--bg3); border:0.5px solid var(--border);
+  border-radius:4px; padding:1px 5px; font-size:.82em;
+  font-family:'SF Mono','Fira Code',monospace;
+}
+.md pre { background:#12121f; border-radius:10px; overflow:hidden; margin:.6rem 0; }
+.dark .md pre { background:#0a0a14; }
+.md blockquote { border-left:3px solid var(--purple); padding-left:.9rem; color:var(--txt2); margin:.6rem 0; }
+.md table { width:100%; border-collapse:collapse; font-size:12.5px; margin:.6rem 0; }
+.md th { background:var(--bg3); font-weight:600; padding:7px 11px; border:.5px solid var(--border); text-align:left; }
+.md td { padding:6px 11px; border:.5px solid var(--border); }
+.md a  { color:var(--purple); text-decoration:underline; }
+.md strong { font-weight:600; }
+.md hr { border:none; border-top:.5px solid var(--border); margin:.8rem 0; }

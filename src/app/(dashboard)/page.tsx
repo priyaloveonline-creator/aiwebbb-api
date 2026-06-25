@@ -4,9 +4,8 @@ import { Plus, ChevronRight } from 'lucide-react';
 import { useAuth } from '@/components/providers/AuthProvider';
 import { useStore } from '@/lib/store';
 import { PROVIDERS, PRO_PROVIDERS } from '@/lib/providers';
-import { RecentChats } from '@/components/dashboard/RecentChats';
+import { RecentChats, UsageChart } from '@/components/dashboard';
 import { ModelSwitcher } from '@/components/dashboard/ModelSwitcher';
-import { UsageChart } from '@/components/dashboard/UsageChart';
 
 const TOOLS = [
   { icon:'🖼', name:'Image Generation', desc:'DALL-E, FLUX, Ideogram', href:'/chat?tool=image' },
